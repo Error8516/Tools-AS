@@ -13,13 +13,3 @@ cmc decet/
 ip finder /
 find shraredns/
 show http header/
-
-# How to install the tool
-
-* Thermux
-pkg install python3
-pkg install git
-pip install colorama
-pip install requests
-pip install builtwith
-git clone https://github.com/Error8516/Tools-AS
