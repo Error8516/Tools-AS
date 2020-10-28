@@ -16,7 +16,7 @@ show http header/
 
 # How to install the tool
 
-* Installed in Thermux
+* Thermux
 pkg install python3
 pkg install git
 pip install colorama
