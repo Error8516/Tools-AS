@@ -1,8 +1,7 @@
 # Tools-AS
-What is tools-AS?
 
-It is a tool for collecting information from websites that is written in Python language. This tool is used in later updates....
-
+What is Tools-AS?
+This site is used to collect information from websites
 # Options
 Admin page finder/
 Dns lookup/
