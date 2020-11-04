@@ -11,4 +11,4 @@ port scan/
 cmc decet/
 ip finder /
 find shraredns/
-show http header/
+show http header...
