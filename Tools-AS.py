@@ -4,6 +4,7 @@ import os
 import sys
 import time
 import socket
+import json
 ############################################################
 def __start__():
       if os.name == "nt":
@@ -25,7 +26,7 @@ def __Banner__():
   (_)`\___/'`\___/'(___)(____/        (_) (_)`\____)     
       """)
       print(Fore.CYAN+"=========================================================")
-      print(Fore.CYAN+"|"+Fore.GREEN+"           ~~~ install best Tools-AS ~~~"+Fore.CYAN+"               |")                                       
+      print(Fore.CYAN+"|"+Fore.GREEN+"           ~~~ install best Tools-AS ~~~"+Fore.CYAN+"               |")           
       print(Fore.CYAN+"=========================================================")           
       print("")                                 
       time.sleep(1)
@@ -44,15 +45,12 @@ def pageone_tools():
       print("")
 
       try:
-            targetAsle= input(Fore.WHITE+"["+Fore.RED+"Tools-AS"+Fore.WHITE+"/"+Fore.WHITE+"HOME"+Fore.WHITE+"/"+Fore.WHITE+"]"+Fore.RED+"~"+Fore.RED+"# "+Fore.WHITE+"")
-            print("")
+            targetAsle= input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~"+Fore.WHITE+"# ")
       except:
-            print(Fore.WHITE+"\n God Lock :)")
             sys.exit()
             
       if targetAsle == "":
-            print(Fore.RED+"[!] Please Enter Value :))")
-            time.sleep(2)
+            time.sleep(1)
             pageone_tools()
 
 ############################################################
@@ -66,11 +64,9 @@ def pageone_tools():
             AboutMe()
       elif targetAsle == "3":
              time.sleep(1)
-             print(Fore.WHITE+"\n God Lock :)")
              sys.exit()
       elif targetAsle == "03":
              time.sleep(1)
-             print(Fore.WHITE+"\n God Lock :)")
              sys.exit()
 
 ############################################################
@@ -110,19 +106,21 @@ def __toolss__():
       
       time.sleep(0.1)
       print(Fore.YELLOW+"["+Fore.RED+"11"+Fore.YELLOW+"]-"+Fore.GREEN+"Robots Scanner")  
-      print("")                                       
+                  
+      time.sleep(0.1)
+      print(Fore.YELLOW+"["+Fore.RED+"12"+Fore.YELLOW+"]-"+Fore.GREEN+"Bypass Cloud Flare")  
+      
+      time.sleep(0.1)
+      print(Fore.YELLOW+"["+Fore.RED+"13"+Fore.YELLOW+"]-"+Fore.GREEN+"Ip Location")  
+      print("")                                                                                                                                                                            
 
       try:
-            #input_tools= input(Fore.MAGENTA+"[+]-"+Fore.YELLOW+"Please Select Namber "+Fore.RED+"卐 "+Fore.WHITE+"")
-            input_tools= input(Fore.WHITE+"["+Fore.RED+"Tools-AS"+Fore.WHITE+"/"+Fore.WHITE+"HOME"+Fore.WHITE+"/"+Fore.YELLOW+"Tools"+Fore.WHITE+"]"+Fore.RED+"~"+Fore.RED+"# "+Fore.WHITE+"")
-            print("")
+            input_tools= input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"InformationGathering"+Fore.WHITE+"# ")
       except:
-            print(Fore.WHITE+"\n God Lock :)")
             sys.exit()
             
       if input_tools == "":
-            print(Fore.RED+"[!] Please Enter Value :))")
-            time.sleep(2)
+            time.sleep(1)
             pageone_tools()
 ############################################################
       if input_tools == "1":
@@ -164,7 +162,11 @@ def __toolss__():
       elif input_tools == "10":
             Find_Shared_DNS()            
       elif input_tools == "11":
-            Robots_Scanner()                  
+            Robots_Scanner()            
+      elif input_tools == "12":
+            Bypass_Cloud_Flare()                                              
+      elif input_tools == "13":
+            Ip_Location()
 ############################################################
 def AboutMe():
       __start__()
@@ -198,26 +200,81 @@ def AboutMe():
       print("")   
 
       time.sleep(0.1)
-      print(Fore.GREEN+"[!]-"+Fore.WHITE+"Github: "+Fore.RED+"Github.com/Error8516")
-      print("")             
-      print(Fore.MAGENTA+"[!] Please wait 15 ...")
+      print(Fore.GREEN+"[!]-"+Fore.WHITE+"Github: "+Fore.RED+"https://github.com/Error8516")
+      print("")
       
-      time.sleep(15) 
-      pageone_tools()
+      try:
+            print("")
+            input(Fore.MAGENTA+"[!] "+Fore.YELLOW+"Go To Menu (press Enter ...) ")
+            pageone_tools()
+      except:
+            sys.exit() 
 ############################################################
+search = ['robots.txt',
+'search/',
+'admin/',
+'login/',
+'sitemap.xml',
+'sitemap2.xml',
+'config.php',
+'wp-login.php',
+'log.txt',
+'update.php',
+'INSTALL.pgsql.txt',
+'user/login/',
+'INSTALL.txt',
+'profiles/',
+'scripts/',
+'LICENSE.txt',
+'CHANGELOG.txt',
+'themes/',
+'inculdes/',
+'misc/',
+'user/logout/',
+'user/register/',
+'cron.php',
+'filter/tips/',
+'comment/reply/',
+'xmlrpc.php',
+'modules/',
+'install.php',
+'MAINTAINERS.txt',
+'user/password/',
+'node/add/',
+'INSTALL.sqlite.txt',
+'UPGRADE.txt',
+'INSTALL.mysql.txt']  
 def Robots_Scanner():
       __start__()
       
-      print(Fore.RED+"It will be completed in the next updates.")
-
       try:
+            print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
             print("")
-            input(Fore.MAGENTA+"[!] "+Fore.YELLOW+"Back To Menu (press Enter ...)")
-            print(Fore.WHITE+"\n God Lock :)")
-            sys.exit()
+            url = input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"RobotsScanner"+Fore.WHITE+"# ")
+            print("")
+            if 'http' in url:
+                  pass
+            elif 'http' != url:
+                  url = ('http://'+url)
+            
+            for i in search:
+                  time.sleep(0.1)
+                  ur = (url+"/"+i)
+                  reqs = requests.get(ur)
+                  if reqs.status_code == 200 or reqs.status_code == 405:
+                        print(Fore.GREEN+"[+] "+ ur)
+            else:
+                print(Fore.RED+"[-] "+ur)
+            try:
+                  print("")
+                  input(Fore.RED+"[!] "+Fore.GREEN+"Go To Menu (Press Enter...) ")
+                  pageone_tools()
+            except:
+                         print("")
+                         sys.exit()  
       except:
-            print("")
-            sys.exit()         
+                   sys.exit()
+        
 ############################################################
 def Find_Shared_DNS():
       __start__()
@@ -226,28 +283,90 @@ def Find_Shared_DNS():
                print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
                print("")
                
-               target_10= input(Fore.WHITE+"["+Fore.RED+"Tools-AS"+Fore.WHITE+"/"+Fore.WHITE+"HOME"+Fore.WHITE+"/"+Fore.YELLOW+"FindSharedDNS"+Fore.WHITE+"]"+Fore.RED+"~"+Fore.RED+"# "+Fore.WHITE+"")               
+               target_10= input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"FindSharedDNS"+Fore.WHITE+"# ")         
                print("")
                
-               result = requests.get('https://api.hackertarget.com/whois/?q=' + target_10).text
-               print(Fore.BLUE+result)
                try:
-                      input(Fore.RED+" [!] "+Fore.GREEN+"Back To Menu (Press Enter...) ")
+                     result = requests.get('https://api.hackertarget.com/whois/?q=' + target_10).text
+                     print(Fore.BLUE+result)
                except:
-                      print("")
+                     Find_Shared_DNS()
+                     
+               try:
+                      input(Fore.RED+" [!] "+Fore.GREEN+"Go To Menu (Press Enter...) "+Fore.WHITE+"")
+                      pageone_tools()
+               except:
                       sys.exit()  
       except:
-                print("\n God Lock :)")
+            sys.exit()
 
       if target_10 == "":
-            print(Fore.BLUE+"[+] please with...")
-            print()
             time.sleep(1)
-            print(Fore.RED+"[!] Please Enter URL...")
-            time.sleep(1)
-            Find_Shared_DNS()
-      else:
-            print(Fore.BLUE+"Please With...")          
+            pageone_tools()
+############################################################
+def Ip_Location():
+      __start__()
+      
+      print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
+      print(Fore.RED+"\n [/] Or Press The Enter Key :))) \n")
+    
+      try:
+           target_11= input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"IpLocation"+Fore.WHITE+"# ")      
+           source = ipapi.location(ip=site, key=None, field=None)
+      except:
+           sys.exit()
+      try:
+         print(Fore.GREEN+" [!]"+Fore.RED+" See your info")
+         print (Fore.GREEN+" [!]"+Fore.BLUE+" ip = "+ source["ip"])
+         print (Fore.GREEN+" [!]"+Fore.BLUE+" city = " + source["city"])
+         print (Fore.GREEN+" [!]"+Fore.BLUE+" region = "+ source["region"])
+         print (Fore.GREEN+" [!]"+Fore.BLUE+" id country = "+source["country"])
+         print (Fore.GREEN+" [!]"+Fore.BLUE+" country = "+ source["country_name"])
+         print (Fore.GREEN+" [!]"+Fore.BLUE+" Calling Code = "+source["country_calling_code"])
+         print (Fore.GREEN+" [!]"+Fore.BLUE+" Languages = "+source["languages"])
+         print (Fore.GREEN+" [!]"+Fore.BLUE+" org = "+ source["org"])
+         try:
+             print("")
+             input(Fore.RED+" [!] "+Fore.GREEN+"Go To Menu (Press Enter...) ")
+             pageone_tools()
+         except:
+             print("")
+             sys.exit()  
+      except:
+          print(Fore.RED+"Sorry Please Enter IP Address")      
+############################################################ 
+def Bypass_Cloud_Flare():
+      __start__()
+      
+      print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
+      subdom = ['ftp', 'cpanel', 'webmail', 'localhost', 'local', 'mysql', 'forum', 'driect-connect', 'blog', 'vb', 'forums', 'home', 'direct', 'forums', 'mail', 'access', 'admin', 'administrator', 'email', 'downloads', 'ssh', 'owa', 'bbs', 'webmin', 'paralel', 'parallels', 'www0', 'www', 'www1', 'www2', 'www3', 'www4', 'www5', 'shop', 'api', 'blogs', 'test', 'mx1', 'cdn', 'mysql', 'mail1', 'secure', 'server', 'ns1', 'ns2', 'smtp', 'vpn', 'm', 'mail2', 'postal', 'support', 'web', 'dev']
+
+      try:
+            site = input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"BypassCloudFlare"+Fore.WHITE+"# ")
+            print("")
+      except:
+            sys.exit()
+
+      if site == "":
+           try:
+                 time.sleep(1)
+                 pageone_tools()
+           except:
+            return
+      for sub in subdom:
+              try:
+                    hosts = str(sub) + "." + str(site)
+                    bypass = socket.gethostbyname(str(hosts))
+                    print ("[!] CloudFlare Bypass " + str(bypass) + ' | ' + str(hosts))
+              except Exception:
+                        pass
+      try:
+            print("")
+            input(Fore.GREEN+" [*] Go To Menu (Press Enter...) ")
+            pageone_tools()
+      except:
+                  print("")
+                  sys.exit()      
 ############################################################
 def whois():
       __start__()
@@ -256,29 +375,28 @@ def whois():
                print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
                print("")
                
-               target_9= input(Fore.WHITE+"["+Fore.RED+"Tools-AS"+Fore.WHITE+"/"+Fore.WHITE+"HOME"+Fore.WHITE+"/"+Fore.YELLOW+"Whois"+Fore.WHITE+"]"+Fore.RED+"~"+Fore.RED+"# "+Fore.WHITE+"") 
-               
+               target_9= input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"whois"+Fore.WHITE+"# ") 
                print("")
+      except:
+            sys.exit()                
+      try:
                result = requests.get('https://api.hackertarget.com/whois/?q=' + target_9).text
                print(Fore.BLUE+result)
-               try:
-                      input(Fore.RED+" [!] "+Fore.GREEN+"Back To Menu (Press Enter...) ")
-               except:
-                      print("")
-                      sys.exit()  
       except:
-                print("\n God Lock :)")
-
+                  whois()
+                     
+      try:
+              print("")
+              input(Fore.RED+" [!] "+Fore.GREEN+"Go To Menu (Press Enter...) "+Fore.WHITE+"")
+              pageone_tools()
+      except:
+                   sys.exit()  
+                   
       if target_9 == "":
-            print(Fore.BLUE+"[+] please with...")
-            print()
             time.sleep(1)
-            print(Fore.RED+"[!] Please Enter URL...")
-            time.sleep(1)
-            whois()
-      else:
-            print(Fore.BLUE+"Please With...")       
-############################################################
+            pageone_tools()
+
+############################################################ 
 def Trace_Route():
       __start__()
       
@@ -286,41 +404,55 @@ def Trace_Route():
               print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
               print("")
                
-              target_8= input(Fore.WHITE+"["+Fore.RED+"Tools-AS"+Fore.WHITE+"/"+Fore.WHITE+"HOME"+Fore.WHITE+"/"+Fore.YELLOW+"TraceRoute"+Fore.WHITE+"]"+Fore.RED+"~"+Fore.RED+"# "+Fore.WHITE+"")   
+              target_8= input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"TraceRoute"+Fore.WHITE+"# ")
               print("")
               
-              result = requests.get('https://api.hackertarget.com/mtr/?q=' + target_8).text
-              print(Fore.BLUE+result)
               try:
-                      input(Fore.RED+" [!] "+Fore.GREEN+"Back To Menu (Press Enter...) ")
+                    result = requests.get('https://api.hackertarget.com/mtr/?q=' + target_8).text
+                    print(Fore.BLUE+result)
+                    print("")
               except:
-                       print("")
+                    Trace_Route()
+              
+              try:
+                      print("")
+                      input(Fore.RED+"[!] "+Fore.GREEN+"Go To Menu (Press Enter...) ")
+                      pageone_tools()
+              except:
                        sys.exit()  
       except:
-                 print("\n God Lock :)")
+            sys.exit()
 
       if target_8 == "":
-            print(Fore.BLUE+"[+] please with...")
-            print()
             time.sleep(1)
-            print(Fore.RED+"[!] Please Enter URL...")
-            time.sleep(1)
-            Trace_Route()
+            pageone_tools()
       else:
-            print(Fore.BLUE+"Please With...")
+            print("")
 ############################################################
 def Reverse_Ip(): # target_7
       __start__()
-      print(Fore.RED+"It will be completed in the next updates.")
+      
+#      try:
+      print (Fore.RED+"\n [!] Enter The Domain/ip\n")
+      website = input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"ReverseIp"+Fore.WHITE+"# ") 
+      print("")
+#      except:
+#            sys.exit()
+
+      mysite = {"remoteAddress":website}
+      link = requests.post("https://domains.yougetsignal.com/domains.php" , mysite)
+      source = json.loads(link.content)
+
+      for data in source["domainArray"]:
+              print(" "+data[0]+"\n")
 
       try:
-            print("")
-            input(Fore.MAGENTA+"[!] "+Fore.YELLOW+"Back To Menu (press Enter ...)")
-            print(Fore.WHITE+"\n God Lock :)")
-            sys.exit()
+              print("")
+              input(Fore.RED+"[!] "+Fore.GREEN+"Go To Menu (Press Enter...) ")
+              pageone_tools()
       except:
-            print("")
-            sys.exit()   
+              print("")
+              sys.exit()
 ############################################################
 def Show_Http_Header():
       __start__()
@@ -329,74 +461,58 @@ def Show_Http_Header():
               print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
               print("")
                
-              target_6= input(Fore.WHITE+"["+Fore.RED+"Tools-AS"+Fore.WHITE+"/"+Fore.WHITE+"HOME"+Fore.WHITE+"/"+Fore.YELLOW+"ShowHttpHeader"+Fore.WHITE+"]"+Fore.RED+"~"+Fore.RED+"# "+Fore.WHITE+"")
+              target_6= input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"ShowHttpHeader"+Fore.WHITE+"# ")
               print("")
-            
+              
+              try:
+                    result= requests.get("http://api.hackertarget.com/httpheaders/?q="+ target_6).text
+                    print(Fore.BLUE+result)
+                    print("")
+              except:
+                    Show_Http_Header()
+              
+              try:
+                      print("")
+                      input(Fore.RED+"[!] "+Fore.GREEN+"Go To Menu (Press Enter...) ")
+                      pageone_tools()
+              except:
+                       sys.exit()  
       except:
-            print(Fore.WHITE+"\n God Lock :)")
             sys.exit()
-            
+
       if target_6 == "":
-            print(Fore.BLUE+"[+] please with...")
-            print()
             time.sleep(1)
-            print(Fore.RED+"[!] Please Enter URL...")
-            time.sleep(1)
-            Show_Http_Header()
-      else:
-            print(Fore.BLUE+"Please With...")
-            #print("")
-            time.sleep(1)
-
-      result= requests.get("http://api.hackertarget.com/httpheaders/?q="+ target_6).text
-      print(Fore.BLUE+result)
-
-      try:
-            print("")
-            input(Fore.MAGENTA+"[!] "+Fore.YELLOW+"Back To Menu (press Enter ...)")
-            print(Fore.WHITE+"\n God Lock :)")
-            sys.exit()
-      except:
-            print("")
-            sys.exit()      
+            pageone_tools()
 ############################################################
 def DNS_Lookup():
       __start__()
 
       try:
-            print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
-            print("")
+              print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
+              print("")
                
-            target_5= input(Fore.WHITE+"["+Fore.RED+"Tools-AS"+Fore.WHITE+"/"+Fore.WHITE+"HOME"+Fore.WHITE+"/"+Fore.YELLOW+"DNSLookup"+Fore.WHITE+"]"+Fore.RED+"~"+Fore.RED+"# "+Fore.WHITE+"")
-            print("")
-
+              target_5= input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"DNSLookup"+Fore.WHITE+"# ")
+              print("")
+              
+              try:
+                    result= requests.get("http://api.hackertarget.com/dnslookup/?q="+ target_5).text
+                    print(Fore.BLUE+result)
+                    print("")
+              except:
+                    Show_Http_Header()
+              
+              try:
+                      print("")
+                      input(Fore.RED+"[!] "+Fore.GREEN+"Go To Menu (Press Enter...) ")
+                      pageone_tools()
+              except:
+                       sys.exit()  
       except:
-            print(Fore.WHITE+"\n God Lock :)")
             sys.exit()
-            
+
       if target_5 == "":
-            print(Fore.BLUE+"[+] please with...")
-            print()
             time.sleep(1)
-            print(Fore.RED+"[!] Please Enter URL...")
-            time.sleep(1)
-            DNS_Lookup()
-      else:
-            print(Fore.BLUE+"Please With...")
-            #print("")
-            time.sleep(1)
-
-      result= requests.get("http://api.hackertarget.com/dnslookup/?q="+ target_5).text
-      print(Fore.BLUE+result)
-
-      try:
-            print("")
-            input(Fore.MAGENTA+"[!] "+Fore.YELLOW+"Back To Menu (press Enter ...)")
-            print(Fore.WHITE+"\n God Lock :)")
-            sys.exit()
-      except:
-            print("")
-            sys.exit()
+            pageone_tools()
 ############################################################
 def Ip_Finder():
       __start__()
@@ -404,29 +520,15 @@ def Ip_Finder():
       try:
             print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
             print("")
-            
-            print(Fore.YELLOW+"["+Fore.RED+"!"+Fore.YELLOW+"]"+Fore.RED+" excemple: excemple.com")
-            time.sleep(0.1)
-            print("")
-            
-            target_4= input(Fore.WHITE+"["+Fore.RED+"Tools-AS"+Fore.WHITE+"/"+Fore.WHITE+"HOME"+Fore.WHITE+"/"+Fore.YELLOW+"IpFinder"+Fore.WHITE+"]"+Fore.RED+"~"+Fore.RED+"# "+Fore.WHITE+"")
-            
 
+            target_4= input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"IpFinder"+Fore.WHITE+"# ")
+            print("")
       except:
-            print(Fore.WHITE+"\n God Lock :)")
             sys.exit()
 
       if target_4 == "":
-            print(Fore.BLUE+"[+] please with...")
-            print()
             time.sleep(1)
-            print(Fore.RED+"[!] Please Enter URL...")
-            time.sleep(1)
-            Ip_Finder()
-      else:
-            print(Fore.BLUE+"Please With...")
-            print("")
-            time.sleep(1)
+            pageone_tools()
 
       ip= socket.gethostbyname(str(target_4))
       def tkrar():
@@ -438,44 +540,29 @@ def Ip_Finder():
 ############################################################
 def Cms_Detect():
       __start__()
-      
-      try:
-            print(Fore.RED+"[!] Please Do Not Include Http.")
-            target_3= input(Fore.WHITE+"["+Fore.RED+"Tools-AS"+Fore.WHITE+"/"+Fore.WHITE+"HOME"+Fore.WHITE+"/"+Fore.YELLOW+"CmsDetect"+Fore.WHITE+"]"+Fore.RED+"~"+Fore.RED+"# "+Fore.WHITE+"")
-      except:
-            print(Fore.WHITE+"\n God Lock :)")
-            sys.exit()
-            
-      if target_3 == "":
-            print(Fore.BLUE+"[+] please with...")
-            print()
-            time.sleep(1)
-            print(Fore.RED+"[!] Please Enter URL...")
-            time.sleep(1)
-            Cms_Detect()
-      else:
-            print(Fore.BLUE+"[+] please with...")
-            print("")
-            
-            if not "http://" in target_3 or not "https://" in target_3:
-                  target_3= ("http://"+target_3)
-                  
-            information= builtwith.parse(target_3)
-            
-            for name in information:
-                  value= " "
-                  for val in information[str(name)]:
-                        time.sleep(0.1)
-                        name= name.replace("-", " ")
-                        name= name.title()
-                        value += str(val)
-                  print(Fore.MAGENTA+"\n"+name+" : "+value)
 
       try:
+             print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
+             print("")
+             target_2 = input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"IpFinder"+Fore.WHITE+"# ")
+             print("")
+      except:
+             sys.exit()
+    
+      if not 'https://' in target_2 or not 'http://' in target_2:
+            target_2 = 'http://'+target_2
+      info = builtwith.parse(target_2)
+      for name in info:
+            value = ''
+            for val in info[str(name)]:
+                  time.sleep(0.1)
+                  name = name.replace('-',' ')
+                  name = name.title()
+                  value += str(val) 
+            print(Fore.BLUE+"\n"+name+': '+value)
+      try:
             print("")
-            input(Fore.MAGENTA+"[!] "+Fore.YELLOW+"Back To Menu (press Enter ...)")
-            print(Fore.WHITE+"\n God Lock :)")
-            sys.exit()
+            input(Fore.GREEN+" [*] Back To Menu (Press Enter...) ")
       except:
             print("")
             sys.exit()
@@ -486,34 +573,26 @@ def port_scan():
       try:
             print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
             print("")
-            
-            print(Fore.MAGENTA+"["+Fore.YELLOW+"!"+Fore.MAGENTA+"]"+Fore.RED+" example: Domin.com")
-            target_2= input(Fore.WHITE+"["+Fore.RED+"Tools-AS"+Fore.WHITE+"/"+Fore.WHITE+"HOME"+Fore.WHITE+"/"+Fore.YELLOW+"PortScan"+Fore.WHITE+"]"+Fore.RED+"~"+Fore.RED+"# "+Fore.WHITE+"")
+            target_2= input(Fore.RED+"Root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"PortScan"+Fore.WHITE+"# ")
+            print("")
       except:
-            print(Fore.WHITE+"\n God Lock :)")
             sys.exit()
             
       if target_2 == "":
-            print(Fore.BLUE+"[+] please with...")
-            print()
             time.sleep(1)
-            print(Fore.RED+"[!] Please Enter URL...")
-            time.sleep(1)
+            pageone_tools()
+      
+      try:
+            result= requests.get("http://api.hackertarget.com/nmap/?q="+ target_2).text
+            print(Fore.YELLOW+result)
+      except:
             port_scan()
-      else:
-            print(Fore.BLUE+"[+] please with...")
-            print("")
-            
-      result= requests.get("http://api.hackertarget.com/nmap/?q="+ target_2).text
-      print(Fore.YELLOW+result)
       
       try:
             print("")
-            input(Fore.MAGENTA+"[!] "+Fore.YELLOW+"Back To Menu (press Enter ...)")
-            print(Fore.WHITE+"\n God Lock :)")
-            sys.exit()
+            input(Fore.MAGENTA+"[!] "+Fore.YELLOW+"Go To Menu (press Enter ...) ")
+            pageone_tools()
       except:
-            print("")
             sys.exit()
 ############################################################
 def Admin_Page_Finder():
@@ -521,24 +600,15 @@ def Admin_Page_Finder():
       
       try:
             print(Fore.YELLOW+"["+Fore.RED+"+"+Fore.YELLOW+"] "+Fore.MAGENTA+"Please Enter URL.")
+            print("")            
+            target_1= input(Fore.RED+"root@Tools-AS"+Fore.WHITE+":"+Fore.BLUE+"~/"+Fore.BLUE+"AdminPageFinder"+Fore.WHITE+"# ")
             print("")
-            
-            target_1= input(Fore.WHITE+"["+Fore.RED+"Tools-AS"+Fore.WHITE+"/"+Fore.WHITE+"HOME"+Fore.WHITE+"/"+Fore.YELLOW+"AdminPageFinder"+Fore.WHITE+"]"+Fore.RED+"~"+Fore.RED+"# "+Fore.WHITE+"")
-            #print("")
       except:
-            print(Fore.WHITE+"\n God Lock :)")
             sys.exit()
             
       if target_1 == "":
-            print(Fore.BLUE+"[+] please with...")
-            print()
             time.sleep(1)
-            print(Fore.RED+"[!] Please Enter URL...")
-            time.sleep(2)
-            Admin_Page_Finder()
-      else:
-            print(Fore.BLUE+"[+] please with...")
-            print("")
+            pageone_tools()
             
       UserPanel= ['admin/','administrator/','login.php','administration/','admin1/','admin2/','admin3/','admin4/','admin5/','moderator/','webadmin/','adminarea/','bb-admin/','adminLogin/','admin_area/','panel-administracion/','instadmin/',
 'memberadmin/','administratorlogin/','adm/','account.asp','admin/account.asp','admin/index.asp','admin/login.asp','admin/admin.asp','/login.aspx',
@@ -677,11 +747,9 @@ def Admin_Page_Finder():
             else:
                   print(Fore.RED+"[-] "+target_1+i+" Not Fount")
       try:
-            input(Fore.MAGENTA+"[!] "+Fore.YELLOW+"Go To Menu (press Enter ...)")
-            print(Fore.WHITE+"\n God Lock :)")
-            sys.exit()
-      except:
-            print("")
+            input(Fore.MAGENTA+"[!] "+Fore.YELLOW+"Go To Menu (press Enter ...) ")
+            pageone_tools()
+      except: 
             sys.exit()
 
 
